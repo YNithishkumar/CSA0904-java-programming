@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+class BankAccount {
+    private String depositorName;
+    private long accountNumber;
+    private String accountType;
+    private double balance;
+
+    // Constructor to initialize the balance
+    public BankAccount() {
+        this.balance = 10000.0;
+    }
+
+    // Method to read account details
+    public void readAccountDetails() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter account number: ");
+        this.accountNumber = scanner.nextLong();
+
+        scanner.nextLine(); // Consume the newline character
+
+        System.out.print("Enter depositor name: ");
+        this.depositorName = scanner.nextLine();
+
+        System.out.print("Enter account type (Savings/Current): ");
+        this.accountType = scanner.nextLine();
+
+        scanner.close();
+    }
+
+    // Method to deposit an amount
+    public void deposit(double amount) {
+        if (amount > 0) {
+            this.balance += amount;
+            System.out.println("Amount deposited successfully. New balance: Rs." + this.balance);
+        } else {
+            System.out.println("Invalid deposit amount. Amount should be greater than 0.");
+        }
+    }
+
+    // Method to withdraw an amount after checking balance
+    public void withdraw(double amount) {
+        if (this.balance - amount >= 500.0) {
+            this.balance -= amount;
+            System.out.println("Amount withdrawn successfully. New balance: Rs." + this.balance);
+        } else {
+            System.out.println("Insufficient balance. Minimum balance must be Rs.500.00");
+        }
+    }
+
+    // Method to display balance
+    public void displayBalance() {
+        System.out.println("Balance in the account: Rs." + this.balance);
+    }
+}
+
+public class BankAccountDemo {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount();
+
+        // Read account details
+        account.readAccountDetails();
+
+        // Deposit an amount
+        account.deposit(1500.0);
+
+        // Withdraw an amount
+        account.withdraw(800.0);
+
+        // Display balance
+        account.displayBalance();
+    }
+}

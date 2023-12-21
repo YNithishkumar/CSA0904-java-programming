@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class NumberAndSquareArray {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the lower and upper range from the user
+        System.out.print("Enter the lower range: ");
+        int lowerRange = scanner.nextInt();
+
+        System.out.print("Enter the upper range: ");
+        int upperRange = scanner.nextInt();
+
+        // Create an array with the first element as the number and the second element as its square
+        ArrayList<int[]> result = createNumberAndSquareArray(lowerRange, upperRange);
+
+        // Display the result
+        System.out.println(result);
+
+        scanner.close();
+    }
+
+    // Function to create an array with the first element as the number and the second element as its square
+    private static ArrayList<int[]> createNumberAndSquareArray(int lower, int upper) {
+        ArrayList<int[]> result = new ArrayList<>();
+
+        for (int i = lower; i <= upper; i++) {
+            int[] pair = {i, i * i};
+            result.add(pair);
+        }
+
+        return result;
+    }
+}
